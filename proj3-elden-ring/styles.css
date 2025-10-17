@@ -1,0 +1,56 @@
+
+h1,h2,h3 {
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    color: #112682;
+}
+body {
+    background-color: #f2f2f2;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+table.assignments {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    border-collapse: collapse;
+}
+.assignments caption {
+    color:#0f5187;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.assignments th, .assignments td {
+    border: 1px solid #1a0ce1;
+    padding: 10px;
+    text-align: left;
+}
+.weather_header {
+    background-color: #11b1c6;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.announcements {
+    width: 60%;
+    margin: 0 auto;
+    padding: 15px;
+    border: 2px solid #c91515;
+    border-radius: 8px;
+    background-color: #0f5187;
+}
+.weather_message {
+    font-size: 1.2em;
+    color: #370606;
+}
+.weather_message:hover {
+    color: #ffffff;
+    
+    background-color: #000000;
+    cursor: pointer;
+    background-image: url("https://media.istockphoto.com/id/1007768414/photo/blue-sky-with-bright-sun-and-clouds.jpg?s=612x612&w=0&k=20&c=MGd2-v42lNF7Ie6TtsYoKnohdCfOPFSPQt5XOz4uOy4=");
+    background-size: cover;
+    width: 800px;
+    height: 100px;
+}      

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Specify the character encoding and make the page responsive on all devices -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Link to external stylesheet (styles.css) stored in /public -->
+    <link rel="stylesheet" href="/styles.css">
+    
+    <!-- Page title displayed on the browser tab -->
+    <title>Carmen_info</title>
+</head>
+
+<body>
+    <!-- ===== COURSES & ASSIGNMENTS TABLE ===== -->
+    <h1>Courses and Assignments</h1> 
+
+    <table class="assignments">
+        <!-- Table caption/title -->
+        <caption>Assignments</caption>
+        
+        <!-- Table header row -->
+        <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Assignment</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Points</th>
+            <th scope="col">Submitted</th>
+            <th scope="col">Graded</th>
+            <br>
+        </tr>
+
+        <!-- Iterate through each course in the @courses variable -->
+        <% @courses.each do |x| %>
+          
+          <!-- Check if the course has any assignments -->
+          <% if x.assignments && !x.assignments.empty? %>
+
+            <!-- Loop through each assignment for the course -->
+            <% x.assignments.each_with_index do |y, idx| %>
+              <tr>
+                <!-- Display the course name only once per group of assignments -->
+                <% if idx == 0 %>
+                  <th scope="row" rowspan="<%= x.assignments.size %>"><%= x.name %></th>
+                <% end %>
+
+                <!-- Display assignment details -->
+                <td><%= y.as_name %></td>
+                <td><%= y.due_at %></td>
+                <td><%= y.points_possible %></td>
+                <td><%= y.submitted %></td>
+                <td><%= y.graded %></td>
+              </tr>
+            <% end %>
+
+          <% else %>
+            <!-- If the course has no assignments, display a placeholder row -->
+            <tr>
+              <th scope="row"><%= x.name %></th>
+              <td colspan="5">No assignments</td>
+            </tr>
+          <% end %>
+        <% end %>
+    </table>
+
+    <!-- ===== ANNOUNCEMENTS SECTION ===== -->
+    <h2>Announcements</h2> 
+
+    <!-- Loop through announcements stored in @announcements -->
+    <ul class="announcements">
+      <% @announcements.each do |a| %>
+        <li>Title: <%= a.title %></li>
+        <li><strong>Course ID: <%= a.course_id %></strong></li>
+        <li><%= a.message %></li>
+        <li>Posted on: <%= a.posted_at %></li>
+      <% end %>
+    </ul>
+
+    <!-- ===== WEATHER SECTION ===== -->
+    <h3>Weather</h3> 
+
+    <!-- Current weather display -->
+    <div class="weather_header">
+        <h4>Current Weather in <%= @city %>, <%= @state %></h4>
+        <p>Temperature: <%= @temperature %> °F</p>
+        <p>Condition: <%= @weather_status %></p>
+        <br />
+    </div>
+
+    <!-- Weather-based message display -->
+    <div class="weather_message">
+
+        <!-- Show messages depending on current weather keywords -->
+        <p><% if @weather_status.include?("Sunny") %>It's sunny!<% end %></p>
+        <p><% if @weather_status.include?("Rain") %>Don't forget your umbrella!<% end %></p>
+        <p><% if @weather_status.include?("Cloud") %>It's cloudy outside.<% end %></p>
+        <p><% if @weather_status.include?("Snow") %>It's snowing! Stay warm!<% end %></p>
+        <p><% if @weather_status.include?("Thunder") %>Stay inside! There's a thunderstorm!<% end %></p>
+        <p><% if @weather_status.include?("Fog") %>It's foggy! Drive safely!<% end %></p>
+        <p><% if @weather_status.include?("Hail") %>Hail is falling! Stay indoors!<% end %></p>
+        <p><% if @weather_status.include?("Wind") %>It's windy outside! Hold onto your hat!<% end %></p>
+        <p><% if @weather_status.include?("Mist") %>It's misty! Be cautious while driving!<% end %></p>
+        <p><% if @weather_status.include?("Drizzle") %>It's drizzling! You might want a light jacket!<% end %></p>
+        <p><% if @weather_status.include?("Overcast") %>It's overcast! A bit gloomy outside!<% end %></p>
+        <p><% if @weather_status.include?("Clear") %>The sky is clear! Enjoy the view!<% end %></p>
+        <p><% if @weather_status.include?("Hurricane") %>There's a hurricane! Stay safe and indoors!<% end %></p>
+        <p><% if @weather_status.include?("Tornado") %>Tornado warning! Seek shelter immediately!<% end %></p>
+        <p><% if @weather_status.include?("Sleet") %>It's sleeting! Be careful on the roads!<% end %></p>
+        <p><% if @weather_status.include?("Blizzard") %>Blizzard conditions! Stay warm and indoors!<% end %></p>
+        <p><% if @weather_status.include?("Freezing") %>Freezing temperatures! Dress warmly!<% end %></p>
+    </div>
+</body>
+</html>
