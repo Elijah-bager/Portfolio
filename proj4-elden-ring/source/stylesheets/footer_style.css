@@ -1,0 +1,47 @@
+/* Footer styles - make footer appear at the bottom of the page using flexbox layout */
+
+html, body {
+	height: 100%;
+}
+
+/* Ensure the body is a column flex container so the footer can be pushed to the bottom */
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	/* keep top padding if a fixed nav is used (navigation_style sets this) */
+	padding-top: var(--nav-height);
+}
+
+.page-content {
+	/* allow the main content area to grow and take available space */
+	flex: 1 0 auto;
+}
+
+.site-footer {
+	background: #f05050;
+	color: #fff;
+	padding: 1rem 0.75rem;
+	text-align: center;
+	flex-shrink: 0; /* do not allow footer to shrink */
+}
+
+.site-footer ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.site-footer a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.site-footer a:hover {
+	text-decoration: underline;
+}
+

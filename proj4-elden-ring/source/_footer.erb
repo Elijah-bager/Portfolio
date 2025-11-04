@@ -1,0 +1,10 @@
+<footer class="site-footer">
+    <ul>
+        <li><%= data.footer.Header.contact %></li>
+        <li><%= data.footer.Header.name %></li>
+        <% links = data.footer.links %>
+        <% links.each do |x| %>
+            <li><a href="<%= x.url %>"><%= x.name %></a></li>
+        <% end %>
+    </ul>
+</footer>

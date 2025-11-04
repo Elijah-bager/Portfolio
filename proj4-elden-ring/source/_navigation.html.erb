@@ -1,0 +1,25 @@
+<% # Determine current language from locals or URL %>
+<% lang = current_lang %>
+
+<ul class="navigation">
+  <% navigation_items = data.navigation.Navigation %>
+  <% navigation_items.each do |item| %>
+    <li class="nav-item">
+      <%# creates the correct linkage for same language pages. Look at localized_href in config.rb %>
+      <% href = localized_href(item['link'], lang) %>
+      <a href="<%= href %>"><%= item['title'] %></a>
+    </li>
+  <% end %>
+  <%# Optional: language switcher (simple) %>
+  <% if config_langs.length > 1 %>
+    <li class="nav-item" style="margin-left:auto">
+      <% config_langs.each do |l| %>
+        <% # Link to the same page but with a different language, remove current page lang prefix %>
+        <% current_basename = File.basename(current_page.path)[3..] %>
+        <a href="<%= localized_href("/#{current_basename}", l) %>" <%= 'style="font-weight:bold"' if l.to_s == lang.to_s %>><%= l.to_s.upcase %></a>
+        <% unless l == config_langs.last %>|<% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+

@@ -1,0 +1,17 @@
+Navigation:
+  - title: "Sachin Kumar"
+  - title: "Home"
+    link: "./index.html"
+  - title: "News"
+    link: "./news.html"
+  - title: "Teaching"
+    link: "./teaching.html"
+  - title: "MyGroup"
+    link: "./mygroup.html"
+  - title: "Prospective Students"
+    link: "./prospective_students.html"
+  - title: "Research"
+    link: "./research.html"
+  - title: "Vitae"
+    link: "./vitae.html"
+    

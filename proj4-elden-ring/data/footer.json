@@ -1,0 +1,30 @@
+{
+    "Header": {
+        "contact": "kumar.1145@osu.edu",
+        "name": "Sachin Kumar"
+
+    },
+    "links": [
+        {
+            "name": "Google Scholar",
+            "url": "https://scholar.google.com/citations?user=qO38fRIAAAAJ&hl=en"
+        },
+        {
+            "name": "Twitter",
+            "url": "https://twitter.com/shocheen"
+        },
+        {
+            "name": "Blue Sky",
+            "url": "https://bsky.app/profile/shocheen.bsky.social"
+        },
+        {
+            "name": "Github",
+            "url": "https://github.com/Sachin19/"
+
+        },
+        {
+            "name": "LinkedIn",
+            "url": "https://www.linkedin.com/in/schn19/"
+        }
+    ]
+}
