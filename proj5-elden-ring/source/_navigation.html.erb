@@ -1,0 +1,9 @@
+<ul class="navigation">
+  <% navigation_items = data.navigation.Navigation %>
+  <% navigation_items.each do |item| %>
+    <li class="nav-item">
+      <% href = item['link'] %>
+      <a href="<%= href %>"><%= item['title'] %></a>
+    </li>
+  <% end %>
+</ul>

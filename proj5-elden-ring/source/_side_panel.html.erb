@@ -1,0 +1,8 @@
+<div class="side-panel">
+  <input type="text" id="course-search" onkeyup="searchCourses()" placeholder="Search for courses..">
+  <div class="side-panel-courses">
+    <% data.courses.courses.each do |course| %>
+      <%= partial "_course", locals: { course: course } %>
+    <% end %>
+  </div>
+</div>

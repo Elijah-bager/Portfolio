@@ -1,0 +1,50 @@
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.course {
+  background-color: #f8f9fa; /* A single, neutral default color */
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: calc(100% - 1rem);
+  max-width: 200px;
+  margin: 0.25rem;
+  font-size: 0.9em;
+}
+
+.course h3, .course p {
+  margin: 0.25rem 0;
+}
+
+.course .note {
+  font-style: italic;
+  color: #555;
+}
+
+.course.hovered {
+  background-color: blue;
+  color: white;
+}
+
+.course.prereq-highlight {
+  background-color: yellow;
+}
+
+.course.prereq-highlight-secondary {
+  background-color: #fffacd; /* Lemon Chiffon - a more distinct yellow */
+}
+
+.course.postreq-highlight {
+  background-color: #00ffff; /* Cyan */
+}
+
+.course.postreq-highlight-secondary {
+  background-color: #e0ffff; /* Light Cyan */
+}
+
+.course.missing-prereq {
+  background-color: orange;
+}

@@ -1,0 +1,24 @@
+<%
+  # course_id is the key for the course, e.g. :cse2221
+  # course is the hash of course data
+  course_id = course[0]
+  course_data = course[1]
+
+  # Find post-requisites
+  post_requisites = []
+  if data.courses.courses
+    data.courses.courses.each do |other_course_id, other_course_data|
+      if other_course_data.prerequisites && other_course_data.prerequisites.include?(course_id.to_s)
+        post_requisites << other_course_id
+      end
+    end
+  end
+%>
+<div id="<%= course_id %>" class="course <%= course_data.type %>" data-prerequisites="<%= course_data.prerequisites.join(',') %>" data-postrequisites="<%= post_requisites.join(',') %>" draggable="true">
+  <h3><%= course_data.code %></h3>
+  <p><%= course_data.name %></p>
+  <p>Credits: <%= course_data.credits %></p>
+  <% if course_data.note %>
+    <p class="note">Note: <%= course_data.note %></p>
+  <% end %>
+</div>

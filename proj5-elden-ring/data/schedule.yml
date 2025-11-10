@@ -1,0 +1,26 @@
+# OSU BS CIS Sample 4-Year Schedule
+# Individualized Specialization Option
+semesters:
+  - name: "Year 1 - Autumn"
+    courses: [asc1100, math1151, physics1250, cse1223, gelaunch]
+    
+  - name: "Year 1 - Spring"
+    courses: [cse2221, math1152, gewriting, science]
+    
+  - name: "Year 2 - Autumn"
+    courses: [cse2231, cse2321, stat3470, forlang1]
+    
+  - name: "Year 2 - Spring"
+    courses: [cse2331, cse2421, math3345, forlang2, gediversity]
+    
+  - name: "Year 3 - Autumn"
+    courses: [cse2431, cse390x, ece2060, forlang3, gehistory]
+    
+  - name: "Year 3 - Spring"
+    courses: [cse32x1, cse34x1, cse35x1, gesbs, ethics]
+    
+  - name: "Year 4 - Autumn"
+    courses: [cse3341, techelec1, techelec2, techelec3, gelitvpa]
+    
+  - name: "Year 4 - Spring"
+    courses: [cse591x, techelec4, techelec5, techelec6, getheme]

@@ -1,0 +1,74 @@
+---
+title: Curriculum planner
+---
+<h1 class = "title">Curriculum Planner</h1>
+<p>Welcome to the Curriculum Planner! This tool helps students design and organize their curriculum effectively.</p>
+<img src="https://gosu02.tripod.com/sitebuildercontent/sitebuilderpictures/grayblock.jpg" alt="Logo" class="logo">
+<div class = "scroll-container">
+  <div class = "scroll-content">
+    <div class="top-row">
+      <div class="majors-column">
+       <div id="Major-list-container" class="top-major-bar">
+         <div class="top-major-inner">
+            <h3>Majors</h3>
+           <ul>
+              <% data.majors.majors.each do |major| %>
+               <li class="major-item"><%= major %></li>
+             <% end %>
+            </ul>
+          </div>
+       </div>
+     </div>
+    </div>
+  </div>
+</div>
+<div class="custom-scrollbar-track">
+        <div class="custom-scrollbar-thumb"></div>
+</div>
+  <div class="color-key-column">
+    <h1>Color key</h1>
+    <div class="orange">Missing prerequisites</div>
+    <div class="yellow">Prerequisite chain</div>
+    <div class="blue">Current hovered item</div>
+    <div class="cyan">Post requisites</div>
+  </div>
+</div>
+
+<div class="page-grid">
+  <div class="main-content">
+    <table id="curriculum-table">
+      <thead>
+        <tr class="header-row">
+          <th colspan="2">First year</th>
+          <th colspan="2">Second year</th>
+          <th colspan="2">Third year</th>
+          <th colspan="2">Fourth year</th>
+        </tr>
+        <tr class="subheader-row">
+          <th>Fall term</th>
+          <th>Spring term</th>
+          <th>Fall term</th>
+          <th>Spring term</th>
+          <th>Fall term</th>
+          <th>Spring term</th>
+          <th>Fall term</th>
+          <th>Spring term</th>
+        </tr>
+      </thead>
+      <tbody id="curriculum-body">
+      </tbody>
+      <tfoot>
+        <tr class = "footer-row">
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+          <td>Hours</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

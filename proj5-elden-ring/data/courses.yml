@@ -1,0 +1,379 @@
+# OSU BS CIS Courses
+courses:
+  cse1223:
+    code: CSE 1223
+    name: Introduction to Computer Programming in Java
+    credits: 3
+    type: cse
+    prerequisites: []
+    
+  cse2221:
+    code: CSE 2221
+    name: "Software I: Software Components"
+    credits: 4
+    type: cse
+    prerequisites: [cse1223]
+    note: Need C or better
+    
+  cse2231:
+    code: CSE 2231
+    name: "Software II: Software Development and Design"
+    credits: 4
+    type: cse
+    prerequisites: [cse2221]
+    
+  cse2321:
+    code: CSE 2321
+    name: "Foundations I: Discrete Structures"
+    credits: 3
+    type: cse
+    prerequisites: [cse1223, math1151]
+    
+  cse2331:
+    code: CSE 2331
+    name: "Foundations II: Data Structures and Algorithms"
+    credits: 3
+    type: cse
+    prerequisites: [cse2221, cse2321]
+    
+  cse2421:
+    code: CSE 2421
+    name: "Systems I: Introduction to Low-Level Programming and Computer Organization"
+    credits: 4
+    type: cse
+    prerequisites: [cse2221]
+    
+  cse2431:
+    code: CSE 2431
+    name: "Systems II: Introduction to Operating Systems"
+    credits: 3
+    type: cse
+    prerequisites: [cse2421]
+    
+  cse2501:
+    code: CSE 2501
+    name: Social, Ethical, and Professional Issues in Computing
+    credits: 1
+    type: cse
+    prerequisites: []
+    
+  cse3231:
+    code: CSE 3231
+    name: Introduction to Software Engineering
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  cse3241:
+    code: CSE 3241
+    name: Introduction to Database Systems
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  cse3341:
+    code: CSE 3341
+    name: Principles of Programming Languages
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  cse3421:
+    code: CSE 3421
+    name: Computer Architecture
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  cse3461:
+    code: CSE 3461
+    name: Computer Networking and Internet Technologies
+    credits: 3
+    type: cse
+    prerequisites: [cse2331, cse2431]
+    
+  cse3521:
+    code: CSE 3521
+    name: Survey of Artificial Intelligence I
+    credits: 3
+    type: cse
+    prerequisites: [cse2331, stat3470]
+    
+  cse3541:
+    code: CSE 3541
+    name: Computer Game and Animation Techniques
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  cse3901:
+    code: CSE 3901
+    name: "Project: Design, Development, and Documentation of Web Applications"
+    credits: 4
+    type: cse
+    prerequisites: [cse2231, gewriting]
+    
+  cse3902:
+    code: CSE 3902
+    name: "Project: Design, Development, and Documentation of Interactive Systems"
+    credits: 4
+    type: cse
+    prerequisites: [cse2231, gewriting]
+    
+  cse3903:
+    code: CSE 3903
+    name: "Project: Design, Development, and Documentation of System Software"
+    credits: 4
+    type: cse
+    prerequisites: [cse2231, gewriting]
+    
+  cse5911:
+    code: CSE 5911
+    name: "Capstone Design: Software Applications"
+    credits: 4
+    type: cse
+    prerequisites: [cse3231, cse3521, cse2501, gewriting]
+    
+  cse5912:
+    code: CSE 5912
+    name: "Capstone Design: Game Design and Development"
+    credits: 4
+    type: cse
+    prerequisites: [cse3231, cse3541, cse2501, gewriting]
+    
+  cse5913:
+    code: CSE 5913
+    name: "Capstone Design: Computer Animation"
+    credits: 4
+    type: cse
+    prerequisites: [cse3231, cse3541, cse2501, gewriting]
+    
+  cse5914:
+    code: CSE 5914
+    name: "Capstone Design: Knowledge-Based Systems"
+    credits: 4
+    type: cse
+    prerequisites: [cse3241, cse3521, cse2501, gewriting]
+    
+  cse5915:
+    code: CSE 5915
+    name: "Capstone Design: Information Systems"
+    credits: 4
+    type: cse
+    prerequisites: [cse3241, cse3461, cse2501, gewriting]
+    
+  math1151:
+    code: MATH 1151
+    name: Calculus I
+    credits: 5
+    type: math
+    prerequisites: []
+    
+  math1152:
+    code: MATH 1152
+    name: Calculus II
+    credits: 5
+    type: math
+    prerequisites: [math1151]
+    
+  math3345:
+    code: MATH 3345
+    name: Foundations of Higher Mathematics
+    credits: 3
+    type: math
+    prerequisites: [math1151]
+    
+  stat3470:
+    code: STAT 3470
+    name: Introduction to Probability and Statistics for Engineers
+    credits: 3
+    type: math
+    prerequisites: []
+    
+  physics1250:
+    code: PHYSICS 1250
+    name: "Mechanics, Thermal Physics, Waves"
+    credits: 5
+    type: physics
+    prerequisites: []
+    
+  ece2060:
+    code: ECE 2060
+    name: Introduction to Digital Logic
+    credits: 3
+    type: other
+    prerequisites: []
+    
+  asc1100:
+    code: ASC 1100
+    name: First Year Success Series
+    credits: 1
+    type: other
+    prerequisites: []
+    
+  gelaunch:
+    code: GE Launch
+    name: General Education Launch Seminar
+    credits: 1
+    type: general
+    prerequisites: []
+    
+  gewriting:
+    code: GE Writing
+    name: "Foundations: Writing and Information Literacy"
+    credits: 3
+    type: general
+    prerequisites: []
+    
+  gediversity:
+    code: GE Diversity
+    name: "Foundations: Race, Ethnic and Gender Diversity"
+    credits: 3
+    type: general
+    prerequisites: []
+    
+  gehistory:
+    code: GE History
+    name: "Foundations: Historical and Cultural Studies"
+    credits: 3
+    type: general
+    prerequisites: []
+    
+  gesbs:
+    code: GE SBS
+    name: "Foundations: Social and Behavioral Sciences"
+    credits: 3
+    type: general
+    prerequisites: []
+    
+  gelitvpa:
+    code: GE Lit/VPA
+    name: "Foundations: Literary, Visual and Performing Arts"
+    credits: 3
+    type: general
+    prerequisites: []
+    
+  getheme:
+    code: GE Theme
+    name: General Education Theme
+    credits: 4
+    type: general
+    prerequisites: []
+    
+  science:
+    code: Science Elective
+    name: Science Elective (5 cr)
+    credits: 5
+    type: other
+    prerequisites: []
+    
+  forlang1:
+    code: Foreign Lang 1
+    name: Foreign Language (4 cr)
+    credits: 4
+    type: general
+    prerequisites: []
+    
+  forlang2:
+    code: Foreign Lang 2
+    name: Foreign Language (4 cr)
+    credits: 4
+    type: general
+    prerequisites: [forlang1]
+    
+  forlang3:
+    code: Foreign Lang 3
+    name: Foreign Language (4 cr)
+    credits: 4
+    type: general
+    prerequisites: [forlang2]
+    
+  ethics:
+    code: Ethics
+    name: CSE 2501 or PHILOS 2338
+    credits: 1
+    type: cse
+    prerequisites: []
+    note: "1 or 4 credits"
+    
+  cse32x1:
+    code: CSE 32X1
+    name: Software Engineering or Databases
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    note: "3231 or 3241"
+    
+  cse34x1:
+    code: CSE 34X1
+    name: Computer Architecture or Networking
+    credits: 3
+    type: cse
+    prerequisites: [cse2331, cse2431]
+    note: "3421 or 3461"
+    
+  cse35x1:
+    code: CSE 35X1
+    name: Artificial Intelligence or Computer Graphics
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    note: "3521 or 3541"
+    
+  cse390x:
+    code: CSE 390X
+    name: "Project: Design, Development, Documentation"
+    credits: 4
+    type: cse
+    prerequisites: [cse2231, gewriting]
+    note: "3901/3902/3903"
+    
+  cse591x:
+    code: CSE 591X
+    name: Capstone Design Experience
+    credits: 4
+    type: cse
+    prerequisites: [cse32x1, cse35x1, ethics, gewriting]
+    note: Includes GE Reflection
+    
+  techelec1:
+    code: Tech Elective
+    name: Technical Elective (CSE 3000+)
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  techelec2:
+    code: Tech Elective
+    name: Technical Elective (CSE 3000+)
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  techelec3:
+    code: Tech Elective
+    name: Technical Elective (CSE 3000+)
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  techelec4:
+    code: Tech Elective
+    name: Technical Elective (CSE 3000+)
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  techelec5:
+    code: Tech Elective
+    name: Technical Elective (CSE 3000+)
+    credits: 3
+    type: cse
+    prerequisites: [cse2331]
+    
+  techelec6:
+    code: Tech Elective
+    name: Technical Elective
+    credits: 1
+    type: other
+    prerequisites: []

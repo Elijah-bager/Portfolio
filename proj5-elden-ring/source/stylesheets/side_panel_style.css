@@ -1,0 +1,25 @@
+.side-panel {
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #f1f1f1;
+  padding-top: 80px;
+  border-left: 1px solid #ccc;
+}
+
+#course-search {
+  width: 90%;
+  font-size: 18px;
+  padding: 11px;
+  border: 1px solid #ddd;
+  margin-left: 5%;
+}
+
+.side-panel-courses {
+  height: calc(100% - 80px);
+  overflow-y: auto;
+  margin-top: 20px;
+}

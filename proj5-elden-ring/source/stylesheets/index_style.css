@@ -1,0 +1,367 @@
+/* Layout: make page footer stick to bottom when present */
+html, body {
+	height: 100%;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+main {
+	flex: 1 0 auto; /* allow main content to grow and push footer down */
+}
+footer {
+	flex-shrink: 0;
+	margin-top: auto;
+}
+.logo {
+	height: 40px;
+	width: auto;
+	float: left;
+
+}
+/* Curriculum table styling */
+#curriculum-table {
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+#curriculum-table th,
+#curriculum-table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+	vertical-align: middle;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Header row - large, visually distinct */
+#curriculum-table thead .header-row th {
+	background: #1f4f8b;
+	color: #fff;
+	font-weight: 700;
+	padding: 14px 8px;
+	font-size: 1.05rem;
+}
+
+/* First subheader row (e.g., Fall/Spring) */
+#curriculum-table thead .subheader-row th {
+	background: #f2f6fb;
+	color: #222;
+	font-weight: 600;
+	padding: 10px 6px;
+	font-size: 0.95rem;
+}
+
+
+/* Make table cells wrap neatly when content is long */
+#curriculum-table td {
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+/* Footer row inside table */
+#curriculum-table tfoot .footer-row td {
+	background: #f8f9fb;
+	font-weight: 700;
+}
+
+/* Responsive tweaks */
+@media (max-width: 800px) {
+	#curriculum-table thead .header-row th {
+		font-size: 0.95rem;
+	}
+	#curriculum-table thead .subheader-row th,
+	#curriculum-table thead .subheader-row-2 th {
+		font-size: 0.8rem;
+		padding: 6px 4px;
+	}
+}
+
+/* Minor helper classes for the major list (top bar) */
+#Major-list-container {
+	width: 100%;
+	background: transparent;
+	padding: 0.5rem 0;
+}
+
+/* Top-major-bar inner container to center content and limit width */
+.top-major-inner {
+	/* Left-align majors bar: keep content aligned to page left edge */
+	width: 100%;
+	padding: 0 12px;
+	/* stack heading and list, align their left edges */
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.top-major-inner ul {
+  display: flex;
+  flex-direction: column; /* stack majors vertically */
+  row-gap: 5px;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.top-major-bar {
+	border-bottom: 1px solid rgba(16,24,40,0.04);
+	padding-bottom: 8px;
+}
+
+/* Top-row layout: majors on the left, color key on the right */
+.top-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 1.5rem;
+	margin-top: 0.75rem;
+}
+
+.majors-column {
+	flex: 0 0 220px; /* left column width */
+}
+
+.color-key-column {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	align-items: flex-start; /* ensure header and items align to left */
+}
+
+.color-key-column h2 {
+	display: block;
+	margin: 0 0 8px 0;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.color-key-column > div {
+  display: block; /* stack each color item under the header */
+  margin: 0 0;
+}
+.scroll-container {
+      position: relative;
+      height: 300px; /* Example height */
+      overflow: hidden; /* Hide native scrollbar */
+    }
+
+.scroll-content {
+      overflow-y: scroll; /* Allow content to scroll */
+      height: 100%;
+      padding-right: 15px; /* Make space for the custom scrollbar */
+    }
+	
+.custom-scrollbar-track {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 10px; /* Scrollbar width */
+      height: 100%;
+      background-color: #f0f0f0;
+    }
+
+.custom-scrollbar-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #888;
+      border-radius: 5px;
+      cursor: grab;
+    }
+/* Heading above the majors list: align with stacked boxes */
+.top-major-inner > h3 {
+	/* heading sits above the stacked major boxes and aligns to their left edge */
+	display: block;
+	width: 200px; /* match .major-item width so heading sits above the items */
+	margin: 0 0 4px 0;
+	padding-left: 0;
+	font-size: 1.05rem;
+	font-weight: 600;
+	color: #0f1724;
+	text-align: left;
+}
+
+@media (max-width: 480px) {
+  .top-major-inner > h3 {
+    width: auto; /* let heading be fluid on very small screens */
+  }
+}
+
+.red {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* red border */
+    width: 50%;
+	background-color: rgba(230, 31, 27, 0.872); /* light red background */
+	color: #000000; /* darker red text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.orange {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* orange border */
+    width: 50%;
+	background-color: rgba(230, 159, 27, 0.872); /* light orange background */
+	color: #000000; /* darker orange text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.yellow {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* yellow border */
+    width: 50%;
+	background-color: rgba(230, 231, 27, 0.872); /* light yellow background */
+	color: #000000; /* darker yellow text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.purple {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* purple border */
+    width: 50%;
+	background-color: rgb(172, 35, 245); /* light purple background */
+	color: #000000; /* darker purple text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.green {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* green border */
+    width: 50%;
+	background-color: rgba(27, 230, 31, 0.872); /* light green background */
+	color: #000000; /* darker green text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.blue {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* blue border */
+    width: 50%;
+	background-color: rgba(27, 31, 230, 0.872); /* light blue background */
+	color: #000000; /* darker blue text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.light-blue {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* light blue border */
+    width: 50%;
+	background-color: rgb(13, 250, 250); /* light blue background */
+	color: #000000; /* darker blue text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+.cyan {
+	display: inline-block; /* shrink-wrap to content so it looks like a small box */
+	border: 1px solid #040000; /* cyan border */
+    width: 50%;
+	background-color: #00ffff; /* light cyan background */
+	color: #000000; /* darker cyan text for contrast */
+	padding: 4px 8px;
+	margin: 5px 0 50px 0;
+	border-radius: 6px;
+	box-sizing: border-box;
+	line-height: 1;
+}
+
+/* Page grid: sidebar (majors) on the left, content on the right */
+.page-grid {
+	display: flex;
+	gap: 1.5rem;
+	align-items: flex-start;
+	margin-top: 1rem;
+}
+
+.page-grid .sidebar {
+	width: 220px; /* fixed sidebar width */
+	flex: 0 0 220px;
+}
+
+.page-grid .main-content {
+	flex: 1 1 auto;
+	min-width: 0; /* allow children to shrink properly */
+}
+
+#Major-list-container ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.major-item {
+  display: block;
+  width: 100px; /* fixed box width so items stack neatly */
+  background: #ffffff;
+  border: 2px solid #e0e6ef;
+  padding: 2px 4px;
+  margin: 2px 50px 0 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(16,24,40,0.04);
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+
+.major-item:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 8px 24px rgba(16,24,40,0.08);
+	background: #3d67e5;
+}
+
+/* Responsive: stack sidebar above content on small screens */
+@media (max-width: 860px) {
+	.page-grid {
+		flex-direction: column;
+	}
+	.page-grid .sidebar {
+		width: 100%;
+		flex: none;
+	}
+	.top-major-inner ul {
+		justify-content: flex-start;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 480px) {
+  /* On very small screens, let major boxes take full width */
+  .major-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 860px) {
+	.top-row {
+		flex-direction: column;
+	}
+	.majors-column {
+		width: 100%;
+		flex: none;
+	}
+}
