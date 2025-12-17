@@ -1,0 +1,88 @@
+<div class="page-container">
+  <div class="debts-page">
+    <h1>Settlement Summary for <%= @trip.name %></h1>
+
+    <% if @creditors.empty? && @debtors.empty? %>
+      <div class="balanced-message">
+        <div class="icon">✓</div>
+        <h2>All Settled Up!</h2>
+        <p>No outstanding debts for this trip. Everyone is square! 💰</p>
+      </div>
+    <% else %>
+      <div class="debts-grid">
+        <div class="debts-section creditors-section">
+          <h3>💵 Owed Money</h3>
+          <ul class="creditors-list">
+            <% @creditors.each do |user, balance| %>
+              <li class="creditor-item">
+                <div class="user-info">
+                  <span class="user-name"><%= user.name %></span>
+                  <span class="user-label">is owed</span>
+                </div>
+                <span class="amount positive"><%= number_to_currency(balance) %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="debts-section debtors-section">
+          <h3>💳 Owes Money</h3>
+          <ul class="debtors-list">
+            <% @debtors.each do |user, balance| %>
+              <li class="debtor-item">
+                <div class="user-info">
+                  <span class="user-name"><%= user.name %></span>
+                  <span class="user-label">owes</span>
+                </div>
+                <span class="amount negative"><%= number_to_currency(balance.abs) %></span>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+      <div class="settlement-plan">
+        <h3>📊 Suggested Settlement Plan</h3>
+        <p class="settlement-intro">Minimum transactions needed to settle all debts:</p>
+        <div class="payments-list">
+          <% 
+            # Simple settlement algorithm: match biggest debtor with biggest creditor
+            creditors = @creditors.map { |u, b| [u, b] }
+            debtors = @debtors.map { |u, b| [u, b.abs] }
+            
+            while creditors.any? && debtors.any?
+              creditor, credit = creditors.first
+              debtor, debt = debtors.first
+              
+              payment = [credit, debt].min
+              
+              if payment > 0.01
+          %>
+            <div class="payment-item">
+              <div class="payment-flow">
+                <span class="payer"><%= debtor.name %></span>
+                <span class="arrow">→</span>
+                <span class="amount-badge"><%= number_to_currency(payment) %></span>
+                <span class="arrow">→</span>
+                <span class="payee"><%= creditor.name %></span>
+              </div>
+            </div>
+          <%
+              end
+              
+              creditors[0][1] -= payment
+              debtors[0][1] -= payment
+              
+              creditors.shift if creditors.first[1] < 0.01
+              debtors.shift if debtors.first[1] < 0.01
+            end
+          %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="debts-actions">
+      <%= link_to "← Back to Trip", trip_path(@trip), class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

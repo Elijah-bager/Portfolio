@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Elden Ring Trip Planner" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <!-- Change these lines to point to your new favicon -->
+    <link rel="icon" href="<%= image_path('EldenRing_Symbol.png') %>" type="image/png">
+    <link rel="apple-touch-icon" href="<%= image_path('EldenRing_Symbol.png') %>">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+    <%= render 'shared/navbar' %>
+    <main class="app-content">
+      <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<div class="trip-details">
+  <h1><%= @trip.name %></h1>
+  <p class="trip-host">Host: <%= @trip.host.name %></p>
+
+  <h3>Participants</h3>
+
+  <ul class="participants">
+    <% @trip.user_trips.each do |user_trip| %>
+      <li class="participant">
+        <%= user_trip.user.name %>
+        <% unless user_trip.user == @trip.host %>
+          <%= button_to 'Remove', remove_participant_trip_path(@trip, user_id: user_trip.user.id), method: :delete, data: { confirm: 'Remove this participant?' }, form: { class: 'inline-form' }, class: 'btn btn-ghost btn-sm remove-link' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <h4>Add Participant</h4>
+  <%= form_with url: add_participant_trip_path(@trip), method: :post do |f| %>
+    <%= f.collection_select :user_id, User.where.not(id: @trip.users.pluck(:id)), :id, :name, { prompt: 'Select user' } %>
+    <%= f.submit 'Add Participant', class: 'btn btn-secondary' %>
+  <% end %>
+
+  <h3>Expenses</h3>
+  <ul class="expense-list">
+    <% @trip.expenses.each do |expense| %>
+      <li class="expense-item">
+        <strong><%= expense.category %></strong>
+        — <%= number_to_currency(expense.amount) %>
+        by <%= expense.spender&.name || 'Unknown' %>
+        (<%= link_to 'Edit', edit_trip_expense_path(@trip, expense) %> |
+         <%= link_to 'Delete', trip_expense_path(@trip, expense), method: :delete, data: { confirm: 'Are you sure?', turbo_method: :delete } %>)
+
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add expense", new_trip_expense_path(@trip), class: "btn btn-primary" %>
+  <%= link_to "View Debts", debts_trip_path(@trip), class: "btn btn-secondary" %>
+  <% if @trip.host == current_user %>
+    <%= link_to "Edit Trip", edit_trip_path(@trip), class: "btn btn-secondary" %>
+    <%= link_to "Delete Trip", trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you sure? This will delete all expenses and debts.' }, class: "btn btn-danger" %>
+  <% else %>
+    <%= link_to "Leave Trip", leave_trip_trip_path(@trip), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to leave this trip?' }, class: "btn btn-warning" %>
+  <% end %>
+
+  <%= link_to "Back to trips", trips_path, class: "btn btn-ghost" %>
+</div>

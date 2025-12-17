@@ -1,0 +1,13 @@
+<h1>Your Account</h1>
+
+<p>Name: <%= current_user.name %></p>
+<p>Email: <%= current_user.email %></p>
+
+<div class="actions">
+  <%= link_to "Edit account", edit_user_registration_path, class: "btn btn-primary" %>
+  <%= button_to "Delete account",
+                registration_path(:user),
+                method: :delete,
+                data: { confirm: "Are you sure? This cannot be undone." },
+                class: "btn btn-danger" %>
+</div>

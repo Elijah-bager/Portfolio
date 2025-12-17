@@ -1,0 +1,16 @@
+<h1>Current Users</h1>
+
+<section>
+    <table>
+    <tr>
+    <td>Id</td>
+    <td>Name</td>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %> </td>
+        </tr>
+    <% end %>
+    </table>
+</section>

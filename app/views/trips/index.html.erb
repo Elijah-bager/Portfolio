@@ -1,0 +1,14 @@
+<h1>All Trips</h1>
+
+<div class="trips-list">
+  <ul>
+    <% @trips.each do |trip| %>
+      <li class="trip-card"><%= link_to trip.name, trip %> <span class="trip-host">(Host: <%= trip.host.name %>)</span>
+      <span class="expenses">(Total cost of trip: <%= number_to_currency(trip.expenses.sum(:amount)) %>)</span>
+     <%= link_to "Delete", trip,
+      data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %></li>
+    <% end %>
+  </ul>
+</div>
+
+<%= link_to "Create New Trip", new_trip_path, class: "btn btn-primary" %>

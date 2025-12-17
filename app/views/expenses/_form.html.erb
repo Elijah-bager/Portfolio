@@ -1,0 +1,50 @@
+<div class="expense-form">
+  <%= form_with(model: [@trip, expense], local: true) do |form| %>
+    <% if expense.errors.any? %>
+      <div class="error-messages">
+        <h3><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h3>
+        <ul>
+        <% expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <%= form.label :amount, "Amount ($)" %>
+      <%= form.number_field :amount, step: 0.01, placeholder: "0.00", required: true, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :category %>
+      <%= form.select :category, [
+        'Food/Drink',
+        'Lodging',
+        'Gas',
+        'Transportation',
+        'Parking',
+        'Activities',
+        'Miscellaneous'
+      ], { prompt: 'Select a category' }, { required: true, class: "form-select" } %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :debtor_ids, "Split this expense with:" %>
+      <p class="form-hint">Select who else should share this cost (you're automatically included)</p>
+      <div class="checkbox-group">
+        <% @trip.users.where.not(id: current_user.id).each do |user| %>
+          <label class="checkbox-label">
+            <%= check_box_tag 'expense[debtor_ids][]', user.id, (expense.debts.pluck(:debtor_id).include?(user.id) if expense.persisted?) %>
+            <%= user.name %>
+          </label>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", trip_path(@trip), class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+</div>

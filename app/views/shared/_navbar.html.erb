@@ -1,0 +1,25 @@
+<nav class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <%= link_to "Elden Trips", root_path, class: "nav-logo" %>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item"><%= link_to "Trips", trips_path %></li>
+      <li class="nav-item"><%= link_to "New Trip", new_trip_path %></li>
+      <li class="nav-item"><%= link_to "Users", users_path %></li>
+    </ul>
+
+    <div class="nav-right">
+      <% if user_signed_in? %>
+        <span class="nav-user">Signed in as <%= current_user.name || current_user.email %></span>
+        <%= link_to "Home", user_home_path, class: "btn btn-ghost" %>
+        <%= link_to "Profile", user_profile_path, class: "btn btn-ghost" %>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "btn btn-ghost" %>
+      <% else %>
+        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+        <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

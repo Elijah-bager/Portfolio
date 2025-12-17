@@ -1,0 +1,55 @@
+<div class="home-container">
+  <h1>Welcome, <%= current_user.name %>!</h1>
+
+  <% if @pending_invitations.any? %>
+    <section class="pending-invitations">
+      <h2>📨 Pending Trip Invitations</h2>
+      <div class="invitations-list">
+        <% @pending_invitations.each do |user_trip| %>
+          <div class="invitation-card">
+            <div class="invitation-info">
+              <h3><%= user_trip.trip.name %></h3>
+              <p class="hosted-by">Hosted by <%= user_trip.trip.host.name %></p>
+              <% if user_trip.trip.start_date && user_trip.trip.end_date %>
+                <p class="trip-dates">
+                  <%= user_trip.trip.start_date.strftime("%b %d") %> - <%= user_trip.trip.end_date.strftime("%b %d, %Y") %>
+                </p>
+              <% end %>
+            </div>
+            <div class="invitation-actions">
+              <%= button_to "Accept", accept_invitation_user_trip_path(user_trip), method: :patch, class: "btn btn-primary" %>
+              <%= button_to "Decline", decline_invitation_user_trip_path(user_trip), method: :delete, class: "btn btn-secondary", data: { confirm: "Are you sure you want to decline this invitation?" } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
+
+  <section class="your-trips">
+    <div class="section-header">
+      <h2>Your Trips</h2>
+      <%= link_to "Create New Trip", new_trip_path, class: "btn btn-primary" %>
+    </div>
+    
+    <% if @trips.any? %>
+      <div class="trips-grid">
+        <% @trips.each do |trip| %>
+          <div class="trip-card">
+            <%= link_to trip.name, trip_path(trip) %>
+            <p class="trip-host">Host: <%= trip.host.name %></p>
+            <% if trip.start_date && trip.end_date %>
+              <p class="trip-dates">
+                <%= trip.start_date.strftime("%b %d") %> - <%= trip.end_date.strftime("%b %d, %Y") %>
+              </p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="empty-state">You haven't joined any trips yet.</p>
+    <% end %>
+  </section>
+
+  <%= link_to "Log Out", destroy_user_session_path, class: "btn btn-ghost", data: { turbo_method: :delete } %>
+</div>
