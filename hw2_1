@@ -1,0 +1,132 @@
+
+
+import numpy as np
+     
+
+# Sigmoid activation function and its derivative
+# TO DO: Implement the sigmoid activation function and its derivative.
+def sigmoid(x):
+    return 1/(1 + np.exp(-x))  # Implement sigmoid function
+
+def sigmoid_derivative(x):
+    s = sigmoid(x)
+    return s * (1 - s)  # Implement derivative of sigmoid function
+     
+
+# Function to initialize weights
+# TO DO: Initialize weights (w1z, w2z, w0z, wzf, w0f) as specified in the problem.
+def initialize_weights():
+    w1z = 0.1  # Initialize weight for x1 to z
+    w2z = -0.1  # Initialize weight for x2 to z
+    w0z = 0.1 # Initialize bias weight for z
+    wzf = -0.1  # Initialize weight from z to f
+    w0f = 0.1  # Initialize bias weight for f
+    return np.array([w1z, w2z, w0z, wzf, w0f])  # Return weights as a numpy array
+     
+
+# Function to forward pass through the network
+# TO DO: Implement the forward pass through the network to compute z and f.
+def forward_pass(x1, x2, w):
+    w1z, w2z, w0z, wzf, w0f = w
+    z_input = x1*w1z + x2*w2z + w0z  # Compute input to hidden layer
+    z = sigmoid(z_input)  # Compute hidden layer output
+    f_input = z *wzf + w0f # Compute input to output layer
+    f = sigmoid(f_input)  # Compute output layer output
+    return z, f  # Return hidden layer output and final output
+    
+     
+
+# Function to calculate errors and perform backpropagation (Stochastic)
+# TO DO: Implement the stochastic weight update for backpropagation.
+def stochastic_update(x1, x2, y, w, eta=0.3):
+    w1z, w2z, w0z, wzf, w0f = w
+    z,f = forward_pass(x1,x2,w)
+    # Compute output error
+    f_error = f-y # Compute error at output layer
+    # Compute gradients for output layer
+    df_input = sigmoid_derivative(f)  # Derivative of output layer activation
+    grad_wzf = f_error * df_input * z  # Gradient for weight from z to f
+    grad_w0f = f_error * df_input  # Gradient for bias weight for f
+    # Compute gradients for hidden layer
+    dz_input = sigmoid_derivative(z)  # Derivative of hidden layer activation
+    grad_w1z = f_error * df_input * wzf * dz_input * x1  # Gradient for weight from x1 to z
+    grad_w2z = f_error * df_input * wzf * dz_input * x2  # Gradient for weight from x2 to z
+    grad_w0z = f_error * df_input * wzf * dz_input  # Gradient for bias weight for z
+    # Update weights
+    w1z -= eta * grad_w1z  # Update weight from x1 to z
+    w2z -= eta * grad_w2z  # Update weight from x2 to z
+    w0z -= eta * grad_w0z  # Update bias weight for z
+    wzf -= eta * grad_wzf  # Update weight from z to f
+    w0f -= eta * grad_w0f  # Update bias weight for f
+    return np.array([w1z, w2z, w0z, wzf, w0f])  # Return updated weights as a numpy array
+
+     
+
+# Function to calculate errors and perform backpropagation (Batch)
+# TO DO: Implement the batch weight update for backpropagation.
+def batch_update(X, y, w, eta=0.3):
+    w1z, w2z, w0z, wzf, w0f = w
+    grad_w1z_sum = 0
+    grad_w2z_sum = 0
+    grad_w0z_sum = 0
+    grad_wzf_sum = 0
+    grad_w0f_sum = 0
+    N = len(X)
+    
+    for (x1, x2), target in zip(X, y):
+        z,f = forward_pass(x1,x2,w)
+        # Compute output error
+        f_error = f-target # Compute error at output layer
+        # Compute gradients for output layer
+        df_input = sigmoid_derivative(f)  # Derivative of output layer activation
+        grad_wzf_sum += f_error * df_input * z  # Accumulate gradient for weight from z to f
+        grad_w0f_sum += f_error * df_input  # Accumulate gradient for bias weight for f
+        # Compute gradients for hidden layer
+        dz_input = sigmoid_derivative(z)  # Derivative of hidden layer activation
+        grad_w1z_sum += f_error * df_input * wzf * dz_input * x1  # Accumulate gradient for weight from x1 to z
+        grad_w2z_sum += f_error * df_input * wzf * dz_input * x2  # Accumulate gradient for weight from x2 to z
+        grad_w0z_sum += f_error * df_input * wzf * dz_input  # Accumulate gradient for bias weight for z
+    
+    # Update weights using average gradients over the batch
+    w1z -= eta * (grad_w1z_sum / N)  # Update weight from x1 to z
+    w2z -= eta * (grad_w2z_sum / N)  # Update weight from x2 to z
+    w0z -= eta * (grad_w0z_sum / N)  # Update bias weight for z
+    wzf -= eta * (grad_wzf_sum / N)  # Update weight from z to f
+    w0f -= eta * (grad_w0f_sum / N)  # Update bias weight for f
+    
+    return np.array([w1z, w2z, w0z, wzf, w0f])  # Return updated weights as a numpy array
+     
+
+# Main function for Question 3
+def main_q3():
+    # Initialize weights
+    w = initialize_weights()
+    
+    # Training data
+    X_train = [(1, 0), (0, 1)]  # Training examples
+    y_train = [1, 0]  # Target labels
+    
+    # Stochastic updates (for 2 epochs)
+    print("Stochastic Updates:")
+    for epoch in range(2):
+        print(f"Epoch {epoch + 1}")
+        for (x1, x2), y in zip(X_train, y_train):
+            # TO DO: Call stochastic_update for each example
+            w = stochastic_update(x1, x2, y, w)
+            print(f"Updated weights: {w}")
+    
+    # Reset weights for batch update
+    w = initialize_weights()
+    
+    # Batch updates (for 2 epochs)
+    print("\nBatch Updates:")
+    for epoch in range(2):
+        print(f"Epoch {epoch + 1}")
+        # TO DO: Call batch_update for the entire training set
+        w = batch_update(X_train, y_train, w)
+        print(f"Updated weights: {w}")
+     
+
+# Run the function for Question 3
+main_q3()
+     
